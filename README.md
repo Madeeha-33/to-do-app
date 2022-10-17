@@ -1,9 +1,9 @@
 # to-do-app
 
-# python version 
+python version 
 3.10.6
 
-Project set up
+# Project set up
 
 
 Install and activate virtualenv on windows
