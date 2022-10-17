@@ -7,4 +7,4 @@ class Task(models.Model):
         return self.task_name
     task_name = models.CharField(max_length=200)
     task_desc = models.CharField(max_length=500)
-
+    task_status = models.BooleanField(default=False)

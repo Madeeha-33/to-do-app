@@ -13,10 +13,31 @@
         <a href="#" class="navbar-brand">Task App</a>
         <div class="navbar">
             <a class="nav-item" href="{% url 'task:add' %}">Add Task</a>
-            &nbsp; &nbsp;&nbsp &nbsp;;
+            &nbsp; &nbsp;&nbsp &nbsp;
             <a class="nav-item" href="{% url 'task:index' %}">View Task</a>
+            {% if user.is_authenticated %}
+            &nbsp; &nbsp;&nbsp &nbsp;;
+            <a class="nav-item" href="{% url 'logout' %}">Logout</a>
+            {% else %}
+            &nbsp; &nbsp;&nbsp &nbsp;;
+            <a class="nav-item" href="{% url 'login' %}">Signin</a>
+            {% endif %}
+            &nbsp; &nbsp;&nbsp &nbsp;;
+    
                 </div>
         </nav>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{message.tags}}">
+            {{message}}
+        </div>
+       
+        {% endfor %}
+        {% endif %}
+        {% if user.is_authenticated %}
+        <h3> Welcome {{user.username}}</h3>
+        {%endif%}
+
     {% block body %}
     {% endblock %}
     

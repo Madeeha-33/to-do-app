@@ -9,16 +9,28 @@
 </head>
 <body>
     {% block body %}
-    <ol>
-        
-        {% for task in task_list %}
-        <li>
-            <h3>
-                <a href="{%url 'task:details' task.id %}">{{task}}</a>
-            </h3>
-        </li>
-        {% endfor %}
-        {% endblock %}
-        </ol>
+    
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Task</th>
+                <th scope="col">Status</th>
+                <th scope="col">Modify</th>
+            </tr>
+        </thead>
+        <tbody>
+{% for task in task_list %}
+        <tr>
+
+        <th scope="row"><a href="{%url 'task:details' task.id %}">{{task}}</a> </th> {%if task.task_status%} <th scope="row">Completed  &#10004 </th> <th scope="row"><a href="{%url 'task:taskstatus' task.id %}">Reopen</a> </th>
+        {%else%} <th scope="row">Pending </th> <th scope="row"><a href="{%url 'task:taskstatus' task.id %}">Mark Done</a></th>       {% endif %}
+
+</tr>
+
+{% endfor %}
+</tbody>
+    </table>
+{% endblock %}
+
 </body>
 </html>
