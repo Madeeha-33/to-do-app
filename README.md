@@ -1,4 +1,10 @@
 # to-do-app
+
+Project set up
+
+# python version 
+3.10.6
+
 Install and activate virtualenv on windows
 
 Install latest version of django
